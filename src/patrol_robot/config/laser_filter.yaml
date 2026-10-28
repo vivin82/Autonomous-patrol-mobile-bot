@@ -1,0 +1,11 @@
+scan_filter_chain:
+# REMOVED laptop_block_filter because LiDAR is now raised.
+# This restores 360-degree vision so it can see obstacles behind it.
+
+# Keep this to ignore edge reflections from the robot's own chassis
+- name: minimum_range_filter
+  type: laser_filters/LaserScanRangeFilter
+  params:
+    use_message_range_limits: false
+    lower_threshold: 0.20
+    upper_threshold: 12.0

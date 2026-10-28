@@ -1,0 +1,27 @@
+frequency: 30
+sensor_timeout: 0.1
+two_d_mode: true
+
+odom_frame: odom
+base_link_frame: base_link
+world_frame: odom
+
+# LiDAR scan matcher odometry
+odom0: /odom
+odom0_config: [true,  true,  false,
+               false, false, true,
+               true,  true,  false,
+               false, false, true,
+               false, false, false]
+odom0_differential: false
+
+# MPU-6050 — gyro Z and linear accelerations only
+# no magnetometer so orientation covariance[0] = -1
+imu0: /imu/data_raw
+imu0_config: [false, false, false,
+              false, false, false,
+              false, false, false,
+              false, false, true,
+              true,  true,  false]
+imu0_differential: false
+imu0_remove_gravitational_acceleration: true

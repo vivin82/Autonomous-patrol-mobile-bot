@@ -1,0 +1,2 @@
+patrol_robot
+-DCATKIN_DEVEL_PREFIX=/home/vivin/patrol_ws/devel -DCMAKE_INSTALL_PREFIX=/home/vivin/patrol_ws/install -G Unix Makefiles

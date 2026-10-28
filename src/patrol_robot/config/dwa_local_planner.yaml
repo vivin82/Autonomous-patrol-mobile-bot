@@ -1,0 +1,37 @@
+DWAPlannerROS:
+# --- 1. THE L298N SLIDE SETTINGS ---
+  max_vel_x: 0.10        # Safe cruising speed
+  min_vel_x: -0.25           # THE FIX: Give it back its reverse gear to dodge you!
+  max_vel_trans: 0.15 
+  min_vel_trans: 0.0
+
+  max_vel_theta: 0.8
+  min_vel_theta: 0.2
+
+  accel_lim_x: 0.2          # Low acceleration so the math accounts for sliding
+  accel_lim_theta: 3.0
+  accel_lim_trans: 1.0
+
+# --- 2. PERFECT NAV GOAL STOPPING ---
+  xy_goal_tolerance: 0.20    # Stop when within 20cm
+  yaw_goal_tolerance: 0.25   
+  latch_xy_goal_tolerance: true # The moment it touches the 20cm circle, slam the brakes
+  penalize_negative_x: false # Tells ROS it's OK to reverse to save itself.
+
+# --- 3. WI-FI SAFE BRAIN (3Hz) ---
+  sim_time: 3.0              # Look 2 seconds ahead      # Check every 2.5cm of the path.
+  vx_samples: 20
+  vth_samples: 30
+  controller_frequency: 3.0  # Keep the Wi-Fi/CPU from crashing
+
+# --- 4. BEHAVIOR & FEAR ---
+  path_distance_bias: 5.0   
+  goal_distance_bias: 5.0  
+  occdist_scale: 1.5      # High fear of obstacles
+  stop_time_buffer: 4.0    # Start braking 0.8 seconds before impact
+  forward_point_distance: 0.0
+  scaling_speed: 0.25
+  max_scaling_factor: 0.2
+
+  oscillation_reset_dist: 0.05
+  prune_plan: true

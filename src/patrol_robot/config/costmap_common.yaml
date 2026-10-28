@@ -1,0 +1,25 @@
+obstacle_range: 2.5
+raytrace_range: 3.0
+combination_method: 1
+
+# 50cm x 50cm square footprint
+footprint: [[0.27, 0.27], [0.27, -0.27], [-0.27, -0.27], [-0.27, 0.27]]
+
+# The base frame of the robot
+robot_base_frame: base_link
+
+observation_sources: laser_scan_sensor
+
+laser_scan_sensor: {
+  sensor_frame: laser, 
+  data_type: LaserScan, 
+  topic: /scan_filtered, 
+  marking: true, 
+  clearing: true
+}
+
+# Inflation configuration to stop bumping legs
+inflation_layer:
+  enabled: true
+  cost_scaling_factor: 0.5 # High value = steep cost curve, it won't be scared of open space
+  inflation_radius: 1.2   # 10cm safety gap beyond the edge of the 50cm robot

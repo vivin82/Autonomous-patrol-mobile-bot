@@ -1,0 +1,10 @@
+<launch>
+
+  <!-- Full navigation stack (hardware + map + AMCL + move_base) -->
+  <include file="$(find patrol_robot)/launch/navigation.launch"/>
+
+  <!-- Patrol node — sends waypoints to move_base in a loop -->
+  <node name="patrol_node" pkg="patrol_robot"
+        type="patrol_node.py" output="screen"/>
+
+</launch>
